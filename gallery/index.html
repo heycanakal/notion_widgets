@@ -2,159 +2,192 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
-  <link href="./css/thumbnail-gallery.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Full-Screen Responsive Image Slider</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+  <link rel="stylesheet" href="./style.css">
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
 
-  <style>
-    .tz-gallery {
-      padding: 40px;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .tz-gallery .thumbnail {
-      padding: 0;
-      margin-bottom: 30px;
-      background-color: #fff;
-      border-radius: 4px;
-      border: none;
-      transition: 0.15s ease-in-out;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.06);
-    }
+body {
+  font-family: "Lexend", sans-serif;
+  background-color: #362a2b;
+  color: #e5ebf3;
+}
 
-    .tz-gallery .thumbnail:hover {
-      transform: translateY(-10px) scale(1.02);
-    }
+.slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 
-    .baguetteBox-button {
-      background-color: transparent !important;
-    }
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.slide.current {
+  opacity: 1;
+}
+
+.slide:first-child {
+  background: url("https://file.notion.so/f/f/6cfd185f-96f8-42e5-a3fa-143196890819/04ce9062-6a0d-49a4-a798-fb6877583e38/1.png?table=block&id=10c0d9bb-55a2-80d9-9d1d-ea8c46873ff4&spaceId=6cfd185f-96f8-42e5-a3fa-143196890819&expirationTimestamp=1727366400000&signature=_-1be6UAAAQxWgNL33RIGHvPD3Z3hxv4UuGXNxWQDCU&downloadName=1.png") no-repeat center top/cover;
+}
+
+.slide:nth-child(2) {
+  background: url("https://file.notion.so/f/f/6cfd185f-96f8-42e5-a3fa-143196890819/bf20c5f3-ca8a-4df1-8ee0-925ab2ec8013/2.png?table=block&id=10c0d9bb-55a2-80e8-a98b-ee94999cdff4&spaceId=6cfd185f-96f8-42e5-a3fa-143196890819&expirationTimestamp=1727366400000&signature=xsl9rNEFulJMbdzn_ek4j8YzgTv_C9x9CyFWnDdTI4E&downloadName=2.png") no-repeat center top/cover;
+}
+
+.slide:nth-child(3) {
+  background: url("https://file.notion.so/f/f/6cfd185f-96f8-42e5-a3fa-143196890819/06d6ea47-40bb-483e-bc2a-e1f5968a0860/3.png?table=block&id=10c0d9bb-55a2-80cc-a56b-cb23b698a408&spaceId=6cfd185f-96f8-42e5-a3fa-143196890819&expirationTimestamp=1727366400000&signature=TRx_l2wogSaWKD4Llu2VnTIKhws0uMumDBiw5xiRNj0&downloadName=3.png") no-repeat center top/cover;
+}
+
+.slide:nth-child(4) {
+  background: url("https://file.notion.so/f/f/6cfd185f-96f8-42e5-a3fa-143196890819/06444a90-8256-4717-851a-02bfdf0bb35b/4.png?table=block&id=10c0d9bb-55a2-808c-90ea-f5812604927c&spaceId=6cfd185f-96f8-42e5-a3fa-143196890819&expirationTimestamp=1727366400000&signature=5RhZzaumn6CcSkSmxFZaLIJKj7KTYC6w19LR3dNVaxQ&downloadName=4.png") no-repeat center top/cover;
+}
+
+.slide:nth-child(5) {
+  background: url("https://file.notion.so/f/f/6cfd185f-96f8-42e5-a3fa-143196890819/57a2800c-5198-4de6-9adf-676129d492d9/5.png?table=block&id=10c0d9bb-55a2-8091-b6aa-ef319b5f0331&spaceId=6cfd185f-96f8-42e5-a3fa-143196890819&expirationTimestamp=1727366400000&signature=G6ZeedRPY74iACxdU9NBoTJ4i4tYpKt8aA5oE5f_EcI&downloadName=5.png") no-repeat center top/cover;
+}
+
+.slide:nth-child(6) {
+  background: url("https://file.notion.so/f/f/6cfd185f-96f8-42e5-a3fa-143196890819/20455662-b711-403b-bc62-4779e48a02c3/7.png?table=block&id=10c0d9bb-55a2-8080-a4b6-cfc498752ba5&spaceId=6cfd185f-96f8-42e5-a3fa-143196890819&expirationTimestamp=1727366400000&signature=y4wukg6CMnzPSVCp9vJSFFIP4-4qOF2Ax1Jr2klCnTc&downloadName=7.png") no-repeat center top/cover;
+}
+
+.slide:nth-child(7) {
+  background: url("https://file.notion.so/f/f/6cfd185f-96f8-42e5-a3fa-143196890819/a542015b-c1b4-4862-b236-43b877bc46c0/8.png?table=block&id=10c0d9bb-55a2-80cf-9a26-d812577d8ade&spaceId=6cfd185f-96f8-42e5-a3fa-143196890819&expirationTimestamp=1727366400000&signature=wbtRcbNRAFLo96ioUAI2PcmHfNjAiO7e5sxeQDyEgXw&downloadName=8.png") no-repeat center top/cover;
+}
+
+.slide:nth-child(8) {
+  background: url("https://file.notion.so/f/f/6cfd185f-96f8-42e5-a3fa-143196890819/a8825693-5bf3-4dbb-97fc-814a08f00687/9.png?table=block&id=10c0d9bb-55a2-80c6-89c8-d3784407abec&spaceId=6cfd185f-96f8-42e5-a3fa-143196890819&expirationTimestamp=1727366400000&signature=JkcO6HQsStOWuZmSIuNwfx5hDv_p6ncKan4y41xY5c4&downloadName=9.png") no-repeat center top/cover;
+}
 
 
-    .carousel-inner>.item>a>img,
-    .carousel-inner>.item>img,
-    .img-responsive,
-    .thumbnail a>img,
-    .thumbnail>img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
+.buttons button#prev {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+}
 
+.buttons button#next {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+}
+
+.buttons button {
+  border: 2px solid #e5ebf3;
+  background-color: transparent;
+  color: #e5ebf3;
+  cursor: pointer;
+  padding: 13px 15px;
+  border-radius: 50%;
+  outline: none;
+}
+
+.buttons button:hover {
+  background-color: #e5ebf3;
+  color: #362a2b;
+}
+
+@media (min-width: 640px) and (min-height: 640px) {
+  .slide .content {
+    bottom: 70px;
+    left: -600px;
+    width: 600px;
+    padding: 2rem;
+    line-height: 1.6;
+  }
+
+  .slide .content h1 {
+    font-size: 2rem;
+  }
+
+  .slide.current .content {
+    transform: translateX(600px);
+  }
+}
+</style>
 </head>
 
 <body>
+  <!-- partial:index.partial.html -->
+  <div class="slider">
+    <div class="slide current"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+  </div>
+  <div class="buttons">
+    <button id="prev"><i class="fas fa-arrow-left"></i></button>
+    <button id="next"><i class="fas fa-arrow-right"></i></button>
+  </div>
+  <!-- partial -->
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const nextButton = document.getElementById("next");
+    const prevButton = document.getElementById("prev");
+    const auto = true;
+    const intervalTime = 5000;
+    let slideInterval;
 
+    const nextSlide = () => {
+      const current = document.querySelector(".current");
+      current.classList.remove("current");
+      if (current.nextElementSibling) {
+        current.nextElementSibling.classList.add("current");
+      } else {
+        slides[0].classList.add("current");
+      }
+    };
 
-  <main>
+    const prevSlide = () => {
+      const current = document.querySelector(".current");
+      current.classList.remove("current");
+      if (current.previousElementSibling) {
+        current.previousElementSibling.classList.add("current");
+      } else {
+        slides[slides.length - 1].classList.add("current");
+      }
+    };
 
+    nextButton.addEventListener("click", () => {
+      nextSlide();
+      if (auto) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, intervalTime);
+      }
+    });
+    prevButton.addEventListener("click", () => {
+      prevSlide();
+      if (auto) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, intervalTime);
+      }
+    });
 
-    <section id="gallery">
-      <div class=" gallery-container container">
-        <div class="tz-gallery">
+    if (auto) {
+      slideInterval = setInterval(nextSlide, intervalTime);
+    }
 
-          <div class="row">
+  </script>
 
-            <!---------------------------------------------->
-            <div data-aos="flip-up" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="1.png">
-                  <img src="1.png">
-                </a>
-              </div>
-            </div>
-
-            <!---------------------------------------------->
-
-            <div data-aos="flip-up" data-aos-delay="20" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="2.png">
-                  <img src="2.png">
-                </a>
-              </div>
-            </div>
-            <!---------------------------------------------->
-
-            <div data-aos="flip-up" data-aos-delay="40" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="3.png">
-                  <img src="3.png">
-                </a>
-
-              </div>
-            </div>
-            <!---------------------------------------------->
-
-            <div data-aos="flip-up" data-aos-delay="60" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="4.png">
-                  <img src="4.png">
-                </a>
-              </div>
-            </div>
-            <!---------------------------------------------->
-
-            <div data-aos="flip-up" data-aos-delay="80" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="5.png">
-                  <img src="5.png">
-                </a>
-              </div>
-            </div>
-            <!---------------------------------------------->
-
-            <div data-aos="flip-up" data-aos-delay="100" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="6.png">
-                  <img src="6.png">
-                </a>
-              </div>
-            </div>
-            <!---------------------------------------------->
-
-            <div data-aos="flip-up" data-aos-delay="120" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="7.png">
-                  <img src="7.png">
-                </a>
-              </div>
-            </div>
-            <!---------------------------------------------->
-
-            <div data-aos="flip-up" data-aos-delay="140" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="8.png">
-                  <img src="8.png">
-                </a>
-              </div>
-            </div>
-            <!---------------------------------------------->
-
-            <div data-aos="flip-up" data-aos-delay="160" class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <a class="lightbox" href="9.png">
-                  <img src="9.png">
-                </a>
-              </div>
-            </div>
-
-
-
-
-          </div>
-        </div>
-      </div>
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-      <script>
-        baguetteBox.run('.tz-gallery');
-      </script>
-
-    </section>
-
-
-  </main>
-
+</body>
 
 </html>
